@@ -29,7 +29,7 @@ file,ghost/master/bw_menu.dicbb9990d40da11fe04bffe759c05d00bcsize=30527date=2
 file,ghost/master/bw_minigames.dic1f1dc398660e366406cbf2eb1cd3b577size=31120date=2023-01-20T11:29:28
 file,ghost/master/bw_mouse.diccce5ce8a42313a3c30b7fd06795e83ddsize=5406date=2023-03-24T09:15:53
 file,ghost/master/bw_nameteach.dic557ef5ad0cfdc1937cce1429a300c896size=3743date=2023-01-19T10:22:25
-file,ghost/master/bw_string.dic0dde9331fe552a2689abf6fe1cf759d8size=7765date=2023-01-29T14:06:49
+file,ghost/master/bw_string.dic0caaf15b9ebda42cf73231ba2f907908size=7761date=2023-08-08T22:37:09
 file,ghost/master/bw_word.dic67732cb406ead458e8e99e4c45b068ecsize=14313date=2022-10-12T02:19:07
 file,ghost/master/clipcopy.dll7296d7c1bb8960a8440aca5c614c3cedsize=358912date=2020-12-12T05:09:55
 file,ghost/master/custompronounstesting.dic3da9e64e51a42b832aafbdbd8173f32fsize=1424date=2022-04-23T01:26:24
