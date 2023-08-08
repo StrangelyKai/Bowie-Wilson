@@ -1,0 +1,78 @@
+charset,UTF-8
+use_self_alpha,1
+use_input_alpha,1
+
+type,balloon
+name,Bowie Wilson Balloon
+
+craftman,Kai
+craftmanurl,
+
+//homeurl,
+
+origin.x,15
+origin.y,18
+
+validrect.left,15
+validrect.top,18
+validrect.right,230
+validrect.bottom,134
+
+wordwrappoint.x,230
+wordwrappoint.y,0
+
+font.name,Arcadepix Plus
+font.height,13
+font.color.r,0
+font.color.g,0
+font.color.b,0
+font.bold,0
+
+// font.shadowcolor.r,0
+// font.shadowcolor.g,0
+// font.shadowcolor.b,0
+// font.shadowstyle,outline
+
+windowposition.x,0
+windowposition.y,0
+
+anchor.font.color.r,207
+anchor.font.color.g,63
+anchor.font.color.b,40
+
+cursor.blendmethod,none
+cursor.style,underline
+
+arrow0.x,221
+arrow0.y,12
+
+arrow1.x,221
+arrow1.y,128
+
+onlinemarker.x,7
+onlinemarker.y,113
+
+sstpmarker.x,46
+sstpmarker.y,120
+
+sstpmessage.font.height,10
+sstpmessage.font.color.r,0
+sstpmessage.font.color.g,0
+sstpmessage.font.color.b,0
+sstpmessage.x,65
+sstpmessage.y,120
+
+number.font.name,Arcadepix Plus
+number.font.height,10
+number.font.color.r,0
+number.font.color.g,0
+number.font.color.b,0
+number.xr,170
+number.y,131
+
+communicatebox.x,8
+communicatebox.y,17
+
+communicatebox.width,229
+communicatebox.height,23
+

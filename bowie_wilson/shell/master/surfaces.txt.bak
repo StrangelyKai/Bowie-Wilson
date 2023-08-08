@@ -1,0 +1,375 @@
+//Converted by olddef2newdef, by Zichqec AND ME BECAUSE THE CONVERTER IS BUGGED. If there are errors in the conversion, contact Zichqec at https://zichqec.github.io/s-the-skeleton/ for assistance
+
+version,1
+
+/*
+███████ ██    ██ ██████  ███████  █████   ██████ ███████ ███████ 
+██      ██    ██ ██   ██ ██      ██   ██ ██      ██      ██      
+███████ ██    ██ ██████  █████   ███████ ██      █████   ███████ 
+     ██ ██    ██ ██   ██ ██      ██   ██ ██      ██           ██ 
+███████  ██████  ██   ██ ██      ██   ██  ██████ ███████ ███████
+*/
+
+//Blank surface for when there's no second character
+surface10
+{
+element0,overlay,surface10.png,0,0
+}
+
+
+/*
+██████   ██████  ██     ██ ██ ███████ 
+██   ██ ██    ██ ██     ██ ██ ██      
+██████  ██    ██ ██  █  ██ ██ █████   
+██   ██ ██    ██ ██ ███ ██ ██ ██      
+██████   ██████   ███ ███  ██ ███████ 
+*/
+//--Default pose
+surface0
+{
+element0,overlay,surface0.png,0,0
+
+//collisions
+collision0,121,59,257,105,Head
+collision1,184,130,214,157,Nose
+
+//--Blinking---------------------------------------------------------------------------
+//Here's the animation block to set up a random blink.
+
+animation200.interval,random,4
+animation200.pattern0,overlay,-1,100,0,0
+animation200.pattern1,overlay,1155,50,0,0
+animation200.pattern2,overlay,1156,100,0,0
+animation200.pattern3,overlay,-1,30,0,0
+
+animation201.interval,never
+animation201.pattern0,stop,200
+
+
+//--Talking-----------------------------------------------------------------------------
+//This block deals with your ghost's mouth moving as it speaks to you. 
+
+animation301.interval,talk,4
+animation301.pattern0,alternativestart,(302,303,304)
+
+animation302.interval,never
+animation302.pattern0,overlay,1119,100,0,0
+animation302.pattern1,overlay,1120,130,0,0
+animation302.pattern2,overlay,-1,100,0,0
+
+animation303.interval,never
+animation303.pattern0,overlay,1120,140,0,0
+animation303.pattern1,overlay,-1,100,0,0
+
+animation304.interval,never
+animation304.pattern0,overlay,1119,140,0,0
+animation304.pattern1,overlay,-1,100,0,0
+
+animation202.interval,never
+animation202.pattern0,parallelstop,(301,302,303,304)
+
+
+// - base
+
+//default body
+animation10.interval,runonce
+animation10.pattern0,replace,100,0,0,0
+
+//default head
+animation11.interval,runonce
+animation11.pattern1,overlay,101,0,0,0
+
+// - dressups
+
+//pride pin
+animation50.interval,bind
+animation50.pattern0,overlay,2000,0,0,0
+
+//unlabled pin
+animation51.interval,bind
+animation51.pattern0,overlay,2001,0,0,0
+
+//trans pin
+animation52.interval,bind
+animation52.pattern0,overlay,2002,0,0,0
+
+//demiboy pin
+animation53.interval,bind
+animation53.pattern0,overlay,2003,0,0,0
+
+//gay pin
+animation54.interval,bind
+animation54.pattern0,overlay,2004,0,0,0
+
+//skull pin
+animation55.interval,bind
+animation55.pattern0,overlay,2005,0,0,0
+
+// - arms
+
+//default arms
+animation105.interval,runonce
+animation105.pattern1,overlay,102,0,0,0
+
+animation110.interval,never
+animation110.pattern0,parallelstop,(106,107,108,109)
+animation110.pattern1,overlay,102,0,0,0
+
+//phone arms
+animation106.interval,never
+animation106.pattern0,parallelstop,(110,105,107,108,109)
+animation106.pattern1,overlay,103,0,0,0
+
+//questioning arms
+animation107.interval,never
+animation107.pattern0,parallelstop,(110,105,106,108,109)
+animation107.pattern1,overlay,104,0,0,0
+
+//pointing arms
+animation108.interval,never
+animation108.pattern0,parallelstop,(110,105,106,107,109)
+animation108.pattern1,overlay,105,0,0,0
+
+//sandwich arms
+animation109.interval,never
+animation109.pattern0,parallelstop,(110,106,107,108,105)
+animation109.pattern1,overlay,106,0,0,0
+
+
+// - blush
+animation16.interval,never
+animation16.pattern0,overlaymultiply,177,0,0,0
+
+animation15.interval,never
+animation15.pattern0,stop,(16)
+
+// - mouths
+
+//default mouth
+animation17.interval,runonce
+animation17.pattern1,overlay,110,0,0,0
+
+animation111.interval,never
+animation111.pattern0,parallelstop,(17,18,19,20,21,22,23,24,25,39)
+animation111.pattern1,overlay,110,0,0,0
+
+//smile mouth
+animation18.interval,never
+animation18.pattern0,parallelstop,(111,17,19,20,21,22,23,24,25,39)
+animation18.pattern1,overlay,111,0,0,0
+
+//small smile mouth
+animation19.interval,never
+animation19.pattern0,parallelstop,(111,17,18,20,21,22,23,24,25,39)
+animation19.pattern1,overlay,112,0,0,0
+
+//small pout mouth
+animation20.interval,never
+animation20.pattern0,parallelstop,(111,17,18,19,21,22,23,24,25,39)
+animation20.pattern1,overlay,113,0,0,0
+
+//pout mouth
+animation21.interval,never
+animation21.pattern0,parallelstop,(111,17,18,19,20,22,23,24,25,39)
+animation21.pattern1,overlay,114,0,0,0
+
+//frown mouth
+animation22.interval,never
+animation22.pattern0,parallelstop,(111,17,18,19,20,21,23,24,25,39)
+animation22.pattern1,overlay,115,0,0,0
+
+//shock mouth
+animation23.interval,never
+animation23.pattern0,parallelstop,(111,17,18,19,20,21,22,24,25,39)
+animation23.pattern1,overlay,116,0,0,0
+
+//sandwich open
+animation24.interval,never
+animation24.pattern0,parallelstop,(111,17,18,19,20,21,22,23,25,39)
+animation24.pattern1,overlay,117,0,0,0
+
+//sandwich closed
+animation25.interval,never
+animation25.pattern0,parallelstop,(111,17,18,19,20,21,22,23,24,39)
+animation25.pattern1,overlay,118,0,0,0
+
+//mouth open
+animation39.interval,never
+animation39.pattern0,parallelstop,(111,17,18,19,20,21,22,23,24,25)
+animation39.pattern1,overlay,1120,0,0,0
+
+
+// - eyes
+
+//default eyes
+animation26.interval,runonce
+animation26.pattern1,overlay,150,0,0,0
+
+animation112.interval,never
+animation112.pattern0,parallelstop,(26,27,28,29,30,31)
+animation112.pattern1,overlay,150,0,0,0
+
+//looking down eyes
+animation27.interval,never
+animation27.pattern0,parallelstop,(112,26,28,29,30,31)
+animation27.pattern1,overlay,151,0,0,0
+
+//looking side eyes
+animation28.interval,never
+animation28.pattern0,parallelstop,(112,26,27,29,30,31)
+animation28.pattern1,overlay,152,0,0,0
+
+//looking side down eyes
+animation29.interval,never
+animation29.pattern0,parallelstop,(112,26,27,28,30,31)
+animation29.pattern1,overlay,153,0,0,0
+
+//looking closed relaxed eyes
+animation30.interval,never
+animation30.pattern0,parallelstop,(112,26,27,28,29,31)
+animation30.pattern1,overlay,154,0,0,0
+
+//looking closed tensed eyes
+animation31.interval,never
+animation31.pattern0,parallelstop,(112,26,27,28,29,30)
+animation31.pattern1,overlay,1155,0,0,0
+
+
+// - eyebrows
+
+//default eyesbrows
+animation32.interval,runonce
+animation32.pattern1,overlay,170,0,0,0
+
+animation113.interval,never
+animation113.pattern0,parallelstop,(32,33,34,35,36,37,38)
+animation113.pattern1,overlay,170,0,0,0
+
+//slightly raised eyebrows
+animation33.interval,never
+animation33.pattern0,parallelstop,(113,32,34,35,36,37,38)
+animation33.pattern1,overlay,171,0,0,0
+
+//raised eyebrows
+animation34.interval,never
+animation34.pattern0,parallelstop,(113,32,33,35,36,37,38)
+animation34.pattern1,overlay,172,0,0,0
+
+//questioning eyebrows
+animation35.interval,never
+animation35.pattern0,parallelstop,(113,32,33,34,36,37,38)
+animation35.pattern1,overlay,173,0,0,0
+
+//angry questioning eyebrows
+animation36.interval,never
+animation36.pattern0,parallelstop,(113,32,33,34,35,37,38)
+animation36.pattern1,overlay,174,0,0,0
+
+//furrowed eyebrows
+animation37.interval,never
+animation37.pattern0,parallelstop,(113,32,33,34,35,36,38)
+animation37.pattern1,overlay,175,0,0,0
+
+//angry eyebrows
+animation38.interval,never
+animation38.pattern0,parallelstop,(113,32,33,34,35,36,37)
+animation38.pattern1,overlay,176,0,0,0
+}
+
+
+
+// -------------------------------------- MARTIN --------------------------------------
+
+surface20
+{
+element0,overlay,surface2501.png,0,0
+
+animation301.interval,talk,4
+animation301.pattern0,replace,2502,200,0,0
+animation301.pattern0,replace,2501,200,0,0
+}
+
+surface21
+{
+element0,overlay,surface2503.png,0,0
+
+animation301.interval,talk,4
+animation301.pattern0,replace,2504,200,0,0
+animation301.pattern0,replace,2503,200,0,0
+}
+
+surface22
+{
+element0,overlay,surface2505.png,0,0
+
+animation301.interval,talk,4
+animation301.pattern0,replace,2506,200,0,0
+animation301.pattern0,replace,2505,200,0,0
+}
+
+surface23
+{
+element0,overlay,surface2507.png,0,0
+
+animation301.interval,talk,4
+animation301.pattern0,replace,2508,200,0,0
+animation301.pattern0,replace,2507,200,0,0
+}
+
+//--surface.append-------------------------------------------------------------------
+
+//There are actually a few special ways you can refine this! For example, surface.append500-590,205 would append the code to Surface500 to Surface590, as well as Surface205. 
+//surface.append500-590,205,!507-509 it would do the same, except it would skip Surfaces507 through 509.
+
+// surface.append100-199,!10 //Bowies Head and Face Collisions
+// {
+// collision0,121,59,257,105,Head
+// collision1,184,130,214,157,Nose
+
+
+// surface.append101-199,!111,!113,!114,!124,!125,!135 //Bowies talking animation
+// {
+// 1interval,talk,4
+// 1pattern0,0,0,alternativestart,[2.3.4]
+
+// 2interval,never
+// 2pattern0,1102,10,overlay,0,0
+// 2pattern1,1101,13,overlay,0,0
+// 2pattern2,-1,10,overlay,0,0
+
+// 3interval,never
+// 3pattern0,1101,14,overlay,0,0
+// 3pattern1,-1,10,overlay,0,0
+
+// 4interval,never
+// 4pattern0,1102,14,overlay,0,0
+// 4pattern1,-1,10,overlay,0,0
+
+// 10interval,never
+// 10pattern0,0,0,parallelstop,[1.2.3.4]
+// }
+
+
+
+// // Radio
+// surface50
+// {
+// element0,overlay,surface50.png,0,0
+
+// collision0,98,216,112,227,PreviousSong
+// collision1,113,215,127,226,NextSong
+// collision2,98,234,112,245,PlayPause
+// collision3,112,234,126,245,Stop
+// collision4,94,247,111,258,VolumeUp
+// collision5,114,247,131,258,VolumeDown
+// }
+
+// char2.tooltips
+// {
+	// PreviousSong,Previous Song
+	// NextSong,Next Song
+	// PlayPause,Play/Pause
+	// Stop,Stop
+	// VolumeUp,Volume Up
+	// VolumeDown,Volume Down
+// }

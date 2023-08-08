@@ -1,0 +1,67 @@
+/*
+ ██████  ██ ██    ██ ███████     ███    ███ ███████ ███    ██ ██    ██ 
+██       ██ ██    ██ ██          ████  ████ ██      ████   ██ ██    ██ 
+██   ███ ██ ██    ██ █████       ██ ████ ██ █████   ██ ██  ██ ██    ██ 
+██    ██ ██  ██  ██  ██          ██  ██  ██ ██      ██  ██ ██ ██    ██ 
+ ██████  ██   ████   ███████     ██      ██ ███████ ██   ████  ██████                                   
+ */
+
+
+Select.givesomething
+{
+	"\b2\i[202]* (You give him...)\n\n[half]/
+	\![*]\q[A glass of water,givewater]\n"
+	--
+	if DiscoveredFavouriteFood == 1
+	{
+		//"\![*]\q[A sandwich,givefavouritefood]\n"
+	}
+	--
+	"\n\![*]\q[Back?,backtomenu]"
+}
+
+Select.givewater
+{
+	"\0\s[0]"
+	--
+	if givenwater < 5
+	{
+		givenwater += 1
+		statgivenwater += 1
+		love += 1
+	    --
+	    "Oh,\w8 thanks!"
+	}
+	else
+	{
+		"\i[10]* (Perhaps that's enough water for now...)"
+		"\i[10]* (You decide against giving him another glass for now, don't wanna drown him.)"
+	}
+	--
+	"\w8\n\n[half]/
+	\![*]\q[Give something else?,givesomething]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.givefavouritefood
+{
+	"\0\s[0]"
+	--
+	if givenfood == 0
+	{
+		givenfood = 1
+		statgivenfood += 1
+		love += 5
+		--
+	    "\s[100]Oh,\w8 thanks!\s[0]\w5\n%(eating)"
+		"\s[100]Oh sweet!\w8\s[0] Thanks%(mandude)!\s[0]\w8\n%(eating)"
+	}
+	else
+	{
+		"\i[10]* (He's probably not hungry again yet.)"
+	}
+	--
+	"\w8\n\n[half]/
+	\![*]\q[Give something else?,givesomething]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}

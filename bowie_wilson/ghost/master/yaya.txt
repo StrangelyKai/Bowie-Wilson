@@ -1,0 +1,48 @@
+﻿/*
+██    ██  █████  ██    ██  █████  
+ ██  ██  ██   ██  ██  ██  ██   ██ 
+  ████   ███████   ████   ███████ 
+   ██    ██   ██    ██    ██   ██ 
+   ██    ██   ██    ██    ██   ██                              
+ */
+
+
+//These define what character set your ghost will be using. Don't touch any of them.
+
+charset, UTF-8
+charset.dic, UTF-8
+charset.output, UTF-8
+charset.file, UTF-8
+charset.save, UTF-8
+charset.extension, UTF-8
+
+
+//---- Dictionary Files ---------------------------------------------------------------------
+
+include, system_config.txt
+dic, bw_string.dic			
+dic, bw_aitalk.dic			
+dic, bw_bootend.dic		
+dic, bw_mouse.dic			
+dic, bw_etc.dic			
+dic, bw_menu.dic
+dic, bw_word.dic
+dic, bw_commu.dic
+dic, bw_nameteach.dic
+dic, bw_anchor.dic
+dic, bw_ask.dic
+dic, bw_give.dic
+dic, bw_minigames.dic
+dic, bw_devmenu.dic
+dic, bw_journal.dic
+dic, custompronounstesting.dic
+dic, bw_interactive.dic
+dic, intervalstacker.dic
+//dic, music_zi.dic
+
+//---- Log Location -------------------------------------------------------------------------
+//I'm not entirely sure what this does, but basically don't touch it.
+
+
+//log, ayame.log
+msglang,english

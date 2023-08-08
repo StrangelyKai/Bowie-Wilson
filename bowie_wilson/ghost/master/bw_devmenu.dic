@@ -1,0 +1,807 @@
+/*
+██████  ███████ ██    ██     ███    ███ ███████ ███    ██ ██    ██ 
+██   ██ ██      ██    ██     ████  ████ ██      ████   ██ ██    ██ 
+██   ██ █████   ██    ██     ██ ████ ██ █████   ██ ██  ██ ██    ██ 
+██   ██ ██       ██  ██      ██  ██  ██ ██      ██  ██ ██ ██    ██ 
+██████  ███████   ████       ██      ██ ███████ ██   ████  ██████                                                                                                                                
+ */
+
+Onopendevmenu
+{
+	_debug = "Off"
+  if debug == 1
+  {
+    _debug = "On"
+  }
+  --
+	"\![set,autoscroll,disable]\b2\_q-- DEV MENU --\n\n/
+	%(r)If you use any of these there is a chance it could break Bowie, these are all for testing purposes.%(d)\n\n/
+	Debug Mode: %(_debug) \f[sup,1](\q[Switch,testingdebugmode])\f[sup,0]\n/
+	Love Lvl: %(love) \f[sup,1](\q[Switch,changinglovelevels])\f[sup,0]\n\n/
+	\![*]\q[Open ReadMe,testopenreadme]\n/
+	\![*]\q[Go To Shell Folder,testshellfolder]\n/
+	\![*]\q[Go To Ghost Folder,testghostfolder]\n\n/
+	\![*]\q[ReplyToGhost,testingReplyToGhost]\n/
+	\![*]\q[Interval Stacker,testinterval]\n/
+	\![*]\q[Pose Maker 3000,testposes]\n/
+	\![*]\q[Test Function,testingfunction]\n/
+	\![*]\q[Test Dialogue,testingdialogue]\n/
+	//\![*]\q[Testing Songs,testingsongs]\n/
+	\![*]\q[Testing Radio,testingradio]\n/
+	//\![*]\q[Interconvohourly set to 0,interconvohourlyset0]\n/
+	//\![*]\q[Recipes,testingrecipes]\n/
+    //\![*]\q[Water levels,testingwater]\n/
+	//\![*]\q[All friends off,TestingFriendsOff]\n/
+	//\![*]\q[Asked about friends toggle,TestingAskedAboutFriends]\n/
+	//\![*]\q[Output Number,TestingOutputNum]\n/
+	//\![*]\q[First call toggle,TestingFirstCallToggle]\n/
+	\n/
+	\![*]\q[Back?,runmenu]\n/
+	\![*]\q[Nevermind,CANCEL]\n/
+	\f[sub,true]Version: Beta 1.3\f[sub,default]"
+}
+
+Select.testshellfolder
+{
+	"\![open,file,shell/master]"
+}
+
+Select.testghostfolder
+{
+	"\![open,file,ghost/master]"
+}
+
+Select.testopenreadme
+{
+	"\![open,file,readme.txt]"
+}
+
+Select.testinterval
+{
+OnIntervalStackerMenu
+}
+
+Select.changinglovelevels
+{
+	"Input Love Lvl  \![open,inputbox,Onchanginglovelevels]"
+}
+
+Onchanginglovelevels
+{
+	love = reference0
+    Select.reopendev
+}
+
+Select.testingReplyToGhost
+{
+	ReplyToGhost
+}
+
+Select.runmenu
+{
+	MenuRun
+}
+
+Select.reopendev
+{
+	Onopendevmenu
+}
+
+Select.testingdebugmode
+{
+  if debug == 1
+  {
+    debug = 0
+  }
+  else
+  {
+	  debug = 1
+  }
+  
+  Select.reopendev
+}
+
+Select.testingfunction
+{
+	"\![raise,OnStartMadlibs]"
+}
+
+Select.testingdialogue
+{
+	
+}
+
+Select.testingsongs
+{
+	"\_qMillions: %(heardmillions) \![*]\q[Switch,switchheardmillions]\n/
+	Best Friend: %(heardbestfriend) \![*]\q[Switch,switchheardbestfriend]\n\n[half]/
+	\![*]\q[Back?,Onopendevmenu]"
+}
+
+Select.testingradio
+{
+	"Radio: %(radioonoff) \![*]\q[Switch,switchradioonoff]\n\n/
+	\![*]\q[Back?,Onopendevmenu]"
+}
+
+Select.switchradioonoff
+{
+  if radioonoff == 0
+  {
+    radioonoff = 1
+    "\p[2]\s[50]"
+  }
+  else
+  {
+    radioonoff = 0
+    "\p[2]\s[-1]"
+  }
+  --
+  Select.testingradio
+}
+
+Select.interconvohourlyset0
+{
+	interconvohourly = 0
+	Onopendevmenu
+}
+
+Select.switchheardmillions
+{
+	if heardmillions == 1
+	{
+		heardmillions = 0
+		Select.testingsongs
+	}
+	else
+	{
+		heardmillions = 1
+		Select.testingsongs
+	}
+}
+
+Select.switchheardbestfriend
+{
+	if heardbestfriend == 1
+	{
+		heardbestfriend = 0
+		Select.testingsongs
+	}
+	else
+	{
+		heardbestfriend = 1
+		Select.testingsongs
+	}
+}
+
+Select.testingrecipes
+{
+	"\_qWhite-choc Cheesecake: %(knowwhitechoccheesecake) \![*]\q[Switch,switchknowwhitechoccheesecake]\n/
+	Choc-chip Cookies: %(knowchocchipcookies) \![*]\q[Switch,switchknowchocchipcookies]\n/
+	Oreo Cheesecake Balls: %(knoworeocheesecakeballs) \![*]\q[Switch,switchknoworeocheesecakeballs]\n\n[half]/
+	\![*]\q[Back?,Onopendevmenu]"
+}
+
+Select.switchknowwhitechoccheesecake
+{
+	if knowwhitechoccheesecake == 1
+	{
+		knowwhitechoccheesecake = 0
+		Select.testingrecipes
+	}
+	else
+	{
+		knowwhitechoccheesecake = 1
+		Select.testingrecipes
+	}
+}
+
+Select.switchknowchocchipcookies
+{
+	if knowchocchipcookies == 1
+	{
+		knowchocchipcookies = 0
+		Select.testingrecipes
+	}
+	else
+	{
+		knowchocchipcookies = 1
+		Select.testingrecipes
+	}
+}
+
+Select.switchknoworeocheesecakeballs
+{
+	if knoworeocheesecakeballs == 1
+	{
+		knoworeocheesecakeballs = 0
+		Select.testingrecipes
+	}
+	else
+	{
+		knoworeocheesecakeballs = 1
+		Select.testingrecipes
+	}
+}
+
+Select.testingwater
+{
+	"\0Water is currently: %(givenwater)\n\n/
+	\![*]\q[Switch to 1,testingwater1]\n/
+	\![*]\q[Switch to 5,testingwater5]\n/
+	\![*]\q[Reset,testingwaterreset]\n\n/
+	\![*]\q[Back?,Onopendevmenu]"
+}
+
+Select.testingwater1
+{
+	givenwater = 1
+	Select.testingwater
+}
+
+Select.testingwater5
+{
+	givenwater = 5
+	Select.testingwater
+}
+
+Select.testingwaterreset
+{
+	givenwater = 0
+	Select.testingwater
+}
+
+Select.TestingFriendsOff
+{
+	"\1\s[10]"
+	MartinOut = 0
+	AstroOut = 0
+	DarrenOut = 0 
+	TianaOut = 0
+}
+
+Select.TestingAskedAboutFriends
+{
+	"\_qMartin: %(AskedAboutMartin) \![*]\q[Switch,switchaskedmartin]\n/
+	Astro: %(AskedAboutAstro) \![*]\q[Switch,switchaskedastro]\n/
+	Darren: %(AskedAboutDarren) \![*]\q[Switch,switchaskeddarren]\n/
+	Tiana: %(AskedAboutTiana) \![*]\q[Switch,switchaskedtiana]\n\n[half]/
+	\![*]\q[Back?,Onopendevmenu]"
+}
+
+Select.switchaskedmartin
+{
+	if AskedAboutMartin == 1
+	{
+		AskedAboutMartin = 0
+		Select.TestingAskedAboutFriends
+	}
+	else
+	{
+		AskedAboutMartin = 1
+		Select.TestingAskedAboutFriends
+	}
+}
+
+Select.switchaskedastro
+{
+	if AskedAboutAstro == 1
+	{
+		AskedAboutAstro = 0
+		Select.TestingAskedAboutFriends
+	}
+	else
+	{
+		AskedAboutAstro = 1
+		Select.TestingAskedAboutFriends
+	}
+}
+
+Select.switchaskeddarren
+{
+	if AskedAboutDarren == 1
+	{
+		AskedAboutDarren = 0
+		Select.TestingAskedAboutFriends
+	}
+	else
+	{
+		AskedAboutDarren = 1
+		Select.TestingAskedAboutFriends
+	}
+}
+
+Select.switchaskedtiana
+{
+	if AskedAboutTiana == 1
+	{
+		AskedAboutTiana = 0
+		Select.TestingAskedAboutFriends
+	}
+	else
+	{
+		AskedAboutTiana = 1
+		Select.TestingAskedAboutFriends
+	}
+}
+
+Select.TestingFirstCallToggle
+{
+	"\_qMartin: %(CalledMartin) \![*]\q[Switch,switchfirstcallmartin]\n/
+	\![*]\q[Back?,Onopendevmenu]"
+}
+
+Select.switchfirstcallmartin
+{
+	if CalledMartin == 1
+	{
+		CalledMartin = 0
+		Select.TestingFirstCallToggle
+	}
+	else
+	{
+		CalledMartin = 1
+		Select.TestingFirstCallToggle
+	}
+}
+
+Select.testposes
+{
+	arms = "None"
+	mouth = "None"
+	eyes = "None"
+	brows = "None"
+	animtalk = "None"
+	animblink = "None"
+	blush = "None"
+	clip = "None"
+	--
+	OnPoseMaker
+}
+
+OnPoseMaker
+{
+	"\![set,balloontimeout,-1]\![set,autoscroll,disable]\b2\_q-- POSE MAKER --\n/
+	%(r)\q[Reset Pose,resetpose]%(d)   \q[Copy,copypose]   \q[CANCEL,cancelmenu]\n/
+	Anim: %(animtalk),%(animblink) Blush: %(blush) Arms: %(arms) Mouth: %(mouth)\nEyes: %(eyes) Brows: %(brows)\n\n/
+	%(r)Other%(d)\n/
+	\q[Talk On,talkon] | \q[Talk Off,talkoff]\n/
+	\q[Blink On,blinkon] | \q[Blink Off,blinkoff]\n/
+	\q[Blush On,blushon] | \q[Blush Off,blushoff]\n\n/
+	%(r)Arms%(d)\n/
+	\q[Default,armsdefault]\n/
+	\q[Phone,armsphone]\n/
+	\q[Wave,armswave]\n/
+	\q[Point,armspoint]\n/
+	\q[Sandwich,armssandwich]\n\n/
+	%(r)Mouth%(d)\n/
+	\q[Default,mouthdefault]\n/
+	\q[Smile,mouthsmile]\n/
+	\q[Small Smile,mouthsmallsmile]\n/
+	\q[Small Pout,mouthsmallpout]\n/
+	\q[Pout,mouthpout]\n/
+	\q[Frown,mouthfrown]\n/
+	\q[Shock,mouthshock]\n/
+	\q[Sandwich (Open),mouthsandwichopen]\n/
+	\q[Sandwich (Closed),mouthsandwichclosed]\n/
+	\q[Open,mouthopen]\n\n/
+	%(r)Eyes%(d)\n/
+	\q[Default,eyesdefault]\n/
+	\q[Down,eyesdown]\n/
+	\q[Side,eyesside]\n/
+	\q[Down Side,eyesdownside]\n/
+	\q[Relax,eyesrelax]\n/
+	\q[Tense,eyestense]\n\n/
+	%(r)Brows%(d)\n/
+	\q[Default,browsdefault]\n/
+	\q[Slightly Raised,browsslraised]\n/
+	\q[Raised,browsraised]\n/
+	\q[Questioning,browsquest]\n/
+	\q[Angry Questioning,browsangquest]\n/
+	\q[Furrowed,browsfurrow]\n/
+	\q[Angry,browsangry]\n"
+}
+
+Select.resetpose
+{
+	"\0\s[0]\1\s[10]"
+	--
+	arms = "None"
+	mouth = "None"
+	eyes = "None"
+	brows = "None"
+	animtalk = "None"
+	animblink = "None"
+	blush = "None"
+	--
+	OnPoseMaker
+}
+
+Select.copypose
+{
+	if arms == "None"
+	{
+		arms = ""
+	}
+	else
+	{
+		arms = "\i%(arms)"
+	}
+	if mouth == "None"
+	{
+		mouth = ""
+	}
+	else
+	{
+		mouth = "\i%(mouth)"
+	}
+	if eyes == "None"
+	{
+		eyes = ""
+	}
+	else
+	{
+		eyes = "\i%(eyes)"
+	}
+	if brows == "None"
+	{
+		brows = ""
+	}
+	else
+	{
+		brows = "\i%(brows)"
+	}
+	if animtalk == "None"
+	{
+		animtalk = ""
+	}
+	else
+	{
+		animtalk = "\i%(animtalk)"
+	}
+	if animblink == "None"
+	{
+		animblink = ""
+	}
+	else
+	{
+		animblink = "\i%(animblink)"
+	}
+	if blush == "None"
+	{
+		blush = ""
+	}
+	else
+	{
+		blush = "\i%(blush)"
+	}
+	--
+    clip = "%(arms)%(mouth)%(eyes)%(brows)%(animtalk)%(animblink)%(blush)"
+	--
+	void FUNCTIONEX("clipcopy.dll","%(clip)")
+	--
+	"\_?%(clip)\_?\n\n\x\c"
+	--
+	Select.testposes
+	
+}
+
+Select.cancelmenu
+{
+	"\0\s[0]\1\s[10]"
+	--
+	arms = "None"
+	mouth = "None"
+	eyes = "None"
+	brows = "None"
+	animtalk = "None"
+	animblink = "None"
+	blush = "None"
+}
+
+Select.talkon
+{
+	"\i[301]"
+	--
+	animtalk = "[301]"
+	--
+	OnPoseMaker
+}
+
+Select.talkoff
+{
+	"\i[202]"
+	--
+	animtalk = "[202]"
+	--
+	OnPoseMaker
+}
+
+Select.blinkon
+{
+	"\i[200]"
+	--
+	animblink = "[200]"
+	--
+	OnPoseMaker
+}
+
+Select.blinkoff
+{
+	"\i[201]"
+	--
+	animblink = "[201]"
+	--
+	OnPoseMaker
+}
+
+Select.blushon
+{
+	"\i[16]"
+	--
+	blush = "[16]"
+	--
+	OnPoseMaker
+}
+
+Select.blushoff
+{
+	"\i[15]"
+	--
+	blush = "[15]"
+	--
+	OnPoseMaker
+}
+
+
+Select.armsdefault
+{
+	"\i[110]"
+	--
+	arms = "[110]"
+	--
+	OnPoseMaker
+}
+
+Select.armsphone
+{
+	"\i[106]"
+	--
+	arms = "[106]"
+	--
+	OnPoseMaker
+}
+
+Select.armswave
+{
+	"\i[107]"
+	--
+	arms = "[107]"
+	--
+	OnPoseMaker
+}
+
+Select.armspoint
+{
+	"\i[108]"
+	--
+	arms = "[108]"
+	--
+	OnPoseMaker
+}
+
+Select.armssandwich
+{
+	"\i[109]"
+	--
+	arms = "[109]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthdefault
+{
+	"\i[111]"
+	--
+	mouth = "[111]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthsmile
+{
+	"\i[18]"
+	--
+	mouth = "[18]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthsmallsmile
+{
+	"\i[19]"
+	--
+	mouth = "[19]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthsmallpout
+{
+	"\i[20]"
+	--
+	mouth = "[20]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthpout
+{
+	"\i[21]"
+	--
+	mouth = "[21]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthfrown
+{
+	"\i[22]"
+	--
+	mouth = "[22]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthshock
+{
+	"\i[23]"
+	--
+	mouth = "[23]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthsandwichopen
+{
+	"\i[24]"
+	--
+	mouth = "[24]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthsandwichclosed
+{
+	"\i[25]"
+	--
+	mouth = "[25]"
+	--
+	OnPoseMaker
+}
+
+Select.mouthopen
+{
+	"\i[39]"
+	--
+	mouth = "[39]"
+	--
+	OnPoseMaker
+}
+
+Select.eyesdefault
+{
+	"\i[112]"
+	--
+	eyes = "[112]"
+	--
+	OnPoseMaker
+}
+
+Select.eyesdown
+{
+	"\i[27]"
+	--
+	eyes = "[27]"
+	--
+	OnPoseMaker
+}
+
+Select.eyesside
+{
+	"\i[28]"
+	--
+	eyes = "[28]"
+	--
+	OnPoseMaker
+}
+
+Select.eyesdownside
+{
+	"\i[29]"
+	--
+	eyes = "[29]"
+	--
+	OnPoseMaker
+}
+
+Select.eyesrelax
+{
+	"\i[30]"
+	--
+	eyes = "[30]"
+	--
+	OnPoseMaker
+}
+
+Select.eyestense
+{
+	"\i[31]"
+	--
+	eyes = "[31]"
+	--
+	OnPoseMaker
+}
+
+Select.browsdefault
+{
+	"\i[113]"
+	--
+	brows = "[113]"
+	--
+	OnPoseMaker
+}
+
+Select.browsslraised
+{
+	"\i[33]"
+	--
+	brows = "[33]"
+	--
+	OnPoseMaker
+}
+
+Select.browsraised
+{
+	"\i[34]"
+	--
+	brows = "[34]"
+	--
+	OnPoseMaker
+}
+
+Select.browsquest
+{
+	"\i[35]"
+	--
+	brows = "[35]"
+	--
+	OnPoseMaker
+}
+
+Select.browsangquest
+{
+	"\i[36]"
+	--
+	brows = "[36]"
+	--
+	OnPoseMaker
+}
+
+Select.browsfurrow
+{
+	"\i[37]"
+	--
+	brows = "[37]"
+	--
+	OnPoseMaker
+}
+
+Select.browsangry
+{
+	"\i[38]"
+	--
+	brows = "[38]"
+	--
+	OnPoseMaker
+}

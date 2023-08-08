@@ -1,0 +1,183 @@
+﻿/*
+███    ███  ██████  ██    ██ ███████ ███████ 
+████  ████ ██    ██ ██    ██ ██      ██      
+██ ████ ██ ██    ██ ██    ██ ███████ █████   
+██  ██  ██ ██    ██ ██    ██      ██ ██      
+██      ██  ██████   ██████  ███████ ███████                                        
+ */
+
+
+//---------------------------Mouse Functions--------------------------
+
+
+//--OnMouseMove
+//This is a bunch of code determining who the mouse is over. Don't touch any of it.
+
+OnMouseMove
+ {
+		//---- reference3 determines the character in question
+		if reference3 == 0 //if the character is 0, aka the main character
+		{
+			//---- it will run the mouse functions for that character
+			MouseMoveSakura
+		}
+		else //if the character isn't 0, then it must be the side character.
+		{
+			//---- this will run the mouse functions for the side character.
+			MouseMoveKero
+		}
+ }
+ 
+OnMouseWheel
+ {
+		//---- reference3 determines the character in question
+		if reference3 == 0 //if the character is 0, aka the main character
+		{
+			//---- it will run the mouse functions for that character
+			MouseMoveSakura
+		}
+		else //if the character isn't 0, then it must be the side character.
+		{
+			//---- this will run the mouse functions for the side character.
+			MouseMoveKero
+		}
+ }
+ 
+
+ //--MouseMoveSakura
+ //The petting function for your main character.
+ 
+MouseMoveSakura
+ {
+	if reference4 != "" //ignore
+ 	{
+ 		stroke++ //if you move the mouse over the right areas, the stroke count will go up.
+ 		if stroke >= 40 //if the stroke count is above a certain number, the petting dialogue will kick in. You can change this number to make the petting take longer or shorter if you want. FLELEs have it set to 50 for some reason, which makes it take longer than this.
+		{
+ 			stroke = 0 //resetting the stroke count
+			if reference4 == "Head" //do you remember the names of the areas you set up for your collisions in surfaces.txt? This is where they come into play! This is where you'd put in the name of your collision, such as head, face, horns, tail, ears, whatever. As mentioned in surfaces.txt, you can add as many collisions to a pose as you want, as long as you make sure to add them all in here so they can actually be used.
+ 			{
+				bowiepets += 1
+				love += 0.1
+				--
+				if asleep == 1
+				{
+				"%(sleepmumb)"
+				}
+				else
+				{
+				Select.bowieheadpatsdialogue
+				}
+ 			}
+ 			elseif reference4 == "Nose" //Another area set up by the collisions in surfaces.txt. You can expand this list with as many elseifs as you need depending on how many collisions you've set up.
+ 			{
+ 				
+ 			}
+			
+ 		}
+	}
+ 	else
+	{
+ 		// If the mouse isn't over the ghost, it'll zero out the stroke value.
+		stroke = 0
+ 	}
+}
+
+Select.bowieheadpatsdialogue : nonoverlap
+{
+	"\0\s[0]\i[23]\i[31]\i[37]\i[201]Ah!\w8\w8\i[19]\i[112]\i[34]\i[200]\nWas that a headpat?\e"
+	"\0\s[0]\i[19]\i[30]\i[33]\i[201]Hmm...\w8\w8\n\i[111]That feels nice...\e"
+}
+
+//---- OnMouseDoubleClick -------------------------------------------------------
+
+OnMouseDoubleClick
+ {
+	//---- like with the OnMouseMove function above, this determines who the user is clicking on.
+	if reference5 == 0 //checks which button is being used for the click
+	{
+	 	if reference3 == 0 //if the character is 0, aka your main character
+		{
+			if reference4 == "Nose"
+			{
+				bowieboops += 1
+				love += 0.1
+				--
+				Select.bowieboopdialogue
+			}
+			else
+			{
+		    MouseDoubleClickSakura
+			}
+		}
+		else
+		{
+ 		MouseDoubleClickKero
+		}
+	}
+ }
+ 
+Select.bowieboopdialogue : nonoverlap
+{
+	"\0\\i[112]i[202]\i[23]\i[34]*boop*"
+}
+
+
+MouseMoveKero
+ {
+	if reference4 != ""
+ 	{
+ 		stroke++
+ 		if stroke >= 40
+		{
+			stroke = 0
+			if reference4 == "Face" //Put in the name of your collision area you set up for your secondary character here.
+ 			{
+				
+ 			}
+			elseif reference4 == "Head"
+			{
+				"\1\s[200]ReplaceDialogue\e"
+			}	
+ 		}
+	}
+ 	else
+	{
+ 		// If the mouse isn't over the ghost, it'll zero out the stroke value.
+		stroke = 0
+ 	}
+}
+ 
+MouseDoubleClickSakura
+ {
+ 	OpenSakuraMenu
+ }
+
+MouseDoubleClickKero
+{
+	if MartinOut == 1
+	{
+		Select.OpenMartinMenu
+	}
+	elseif AstroOut == 1
+	{
+		Select.OpenAstroMenu
+	}
+	elseif DarrenOut == 1
+	{
+		Select.OpenDarrenMenu
+	}
+	elseif TianaOut == 1
+	{
+		Select.OpenTianaMenu
+	}
+	else
+	{
+		OpenKeroMenu
+	}
+}
+ 
+
+ //*********************Advanced User Info*******************************
+ //There are other mouse related functions you could set up much like the above, such as OnMouseDragStart, OnMouseDragEnd, OnMouseWheel, and others which correspond to various things you can do with your mouse. You can probably guess what those functions do just by their names - OnMouseWheel would be if someone spun their mouse wheel over a certain area, for example. If you're interested in these, I'd recommend doing some reading at the CROW-SSP Encyclopedia to get a better idea of them and settle down for some trial and error learning as you try to put them in.
+ //***********************************************************************

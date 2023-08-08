@@ -1,0 +1,210 @@
+     // ██  ██████  ██    ██ ██████  ███    ██  █████  ██      
+     // ██ ██    ██ ██    ██ ██   ██ ████   ██ ██   ██ ██      
+     // ██ ██    ██ ██    ██ ██████  ██ ██  ██ ███████ ██      
+// ██   ██ ██    ██ ██    ██ ██   ██ ██  ██ ██ ██   ██ ██      
+ // █████   ██████   ██████  ██   ██ ██   ████ ██   ██ ███████ 
+ 
+Select.openjournal
+{
+	"\b2\_q-- JOURNAL --\n\n[half]/
+	\![*]\q[Stats,statspage]\n/
+	//\![*]\q[Profiles,profilepage]\n/
+	//\![*]\q[Recipes,recipebook]\n/
+	\![*]\q[Song Lyrics,songbook]\n"
+	--
+	if animerecon == 1
+	{
+		"\![*]\q[Anime Recommendations,animerecs]\n"
+	}
+	else
+	{
+	}
+	--
+	"\n/
+	\![*]\q[Back?,checkstuff]\n/
+	\![*]\q[Nevermind,CANCEL]"
+}
+
+Select.statspage
+{
+	"\b2\![set,autoscroll,disable]\_q/
+	- Stats -\n\n[half]/
+	Love Lvl: %(lovelvl)\n\n[half]/
+	* (You've pet Bowie %(r)%(bowiepets)%(d) times.)\n/
+	* (You've booped Bowie %(r)%(bowieboops)%(d) times.)\n/
+	* (You've watered Bowie %(r)%(statgivenwater)%(d) times.)\n/
+	//* (You've fed Bowie %(r)%(statgivenfood)%(d) times.)\n\n/
+	* (You've won hangman %(r)%(stathangmanwins)%(d) times.)\n\n/
+	\![*]\q[Back?,openjournal]"
+}
+
+Select.profilepage
+{
+	"\b2\_q- PROFILES -\n\n/
+	\![*]\q[Bowie,profilebowie]\n\n/
+	\![*]\q[Back?,openjournal]"
+}
+
+Select.profilebowie
+{
+	"\b2\_q- PROFILES -\n\n/
+	Name: Bowie Wilson\n/
+	Age: %(knowbowieage)\n/
+	Pronouns: %(knowbowiepronouns)\n/
+	Birthday: %(knowbowiebday)\n/
+	Identity: %(knowbowieidentity)\n/
+	Sexuality: %(knowbowiesexuality)\n/
+	Occupation: %(knowbowieocc)\n/
+	Likes: %(knowbowiefavefood)\n/
+	Disikes: %(knowbowiehatefood)\n\n/
+	\![*]\q[Back?,profilepage]\n"
+}
+
+Select.recipebook
+{
+	"\![set,autoscroll,disable]\b2\_q- RECIPES -\n\n"
+	--
+	if knoworeocheesecakeballs == 0 && knowchocchipcookies == 0 && knowwhitechoccheesecake == 0
+	{
+		"* (You don't know any recipes right now.)\n\n"
+	}
+	else
+	{
+		if knoworeocheesecakeballs == 1
+		{
+			"\![*]\q[Oreo Cheesecake Balls,oreocheesecakeballsrecipe]\n"
+		}
+		--
+		if knowchocchipcookies == 1
+		{
+			"\![*]\q[Choc-chip Cookies,chocchipcookiesrecipe]\n"
+		}
+		--
+		if knowwhitechoccheesecake == 1
+		{
+			"\![*]\q[White-choc Cheesecake,whitechoccheesecakerecipe]\n"
+		}
+	}
+	--
+	"\n\![*]\q[Back?,openjournal]\n/
+	\![*]\q[Nevermind,CANCEL]"
+}
+
+Select.oreocheesecakeballsrecipe
+{
+	"\b2\_q - Oreo Cheesecake Balls -\n\n"
+}
+
+Select.chocchipcookiesrecipe
+{
+	"\b2\_q - Choc-Chip Cookies -\n\n"
+}
+
+Select.whitechoccheesecakerecipe
+{
+	"\b2\_q - White Chocolate Cheesecake -\n\n"
+}
+
+Select.songbook
+{
+	"\![set,autoscroll,disable]\b2\_q- SONGS -\n\n[half]/
+	(Lyrics Bowie has randomly sung will show up here, along with the title of the song and artist.)\n\n"
+	--
+	if 	heardmillions == 0 && heardbestfriend == 0 && heardaguythat == 0 && heardmammamia == 0 && heardpuppyprincess == 0 && heardbabyyoura == 0 && heardelectriclove == 0 && heardtheonlyhopeforme == 0 && heardtogetherinelectric == 0
+	{
+		"* (You don't know any songs right now.)\n\n"
+	}
+	else
+	{
+		if heardmillions == 1
+		{
+			"%(i)'A million reasons, but I need a million moreeeeee~'%(d)\n- %(r)Millions%(d) by %(r)Gerard Way%(d)\n\n[half]"
+		}
+		--
+		if heardbestfriend == 1
+		{
+			"%(i)'I wanna be your favourite boyyyy, I wanna be the one that makes your day...'%(d)\n- %(r)Best Friend%(d) by %(r)Red Orange County%(d)\n\n[half]"
+		}
+		--
+		if heardaguythat == 1
+		{
+			"%(i)'From a guyyyy that you'd never be into, into a guyyyy that you'd kinda be into...'%(d)\n- %(r)A Guy That I'd Kinda Be Into%(d) from %(r)Be More Chill%(d)\n\n[half]"
+		}
+		--
+		if heardmammamia == 1
+		{
+			"%(i)'Mamma mia, here I go again, my, my, how can I resist ya?'%(d)\n- %(r)Mamma Mia%(d) by %(r)Abba%(d)\n\n[half]"
+		}
+		--
+		if heardpuppyprincess == 1
+		{
+			"%(i)'Kissssss me, kiss me with your eyeees closed~'%(d)\n- %(r)Puppy Princess%(d) by %(r)Hot Freaks%(d)\n\n[half]"
+		}
+		--
+		if heardbabyyoura == 1
+		{
+			"%(i)'Baby, you're a haunted house, better find another superstition~'%(d)\n- %(r)Baby You're a Hanuted House%(d) by %(r)Gerard Way%(d)\n\n[half]"
+		}
+		--
+		if heardelectriclove == 1
+		{
+			"%(i)'Baby, you're like lightning in a bottle, I can't let you go now that I got it...'%(d)\n- %(r)Electric Love%(d) by %(r)Borns%(d)\n\n[half]"
+		}
+		--
+		if heardtheonlyhopeforme == 1
+		{
+			"%(i)'Can I be the only hope for youuuu? Because you're the only hope for meeeee!'%(d)\n- %(r)The Only Hope For Me is You%(d) by %(r)My Chemical Romance%(d)\n\n[half]"
+		}
+		--
+		if heardtogetherinelectric == 1
+		{
+			"%(i)'We'll always be together, However far it seems, We'll always be together, Together in electric\ndreeeeeeams~'%(d)\n- %(r)Together in Electric Dreams%(d) from %(r)Electric Dreams%(d)\n\n[half]"
+		}
+	}
+	--
+	"\n\![*]\q[Back?,openjournal]\n/
+	\![*]\q[Nevermind,CANCEL]"
+}
+
+Select.animerecs
+{
+	"\b2\_q- ANIME RECS -\n\n/
+	//\![*]\q[Sk8 the Infinity,animesk8]\n/
+	\![*]\q[Doukyuusei,animedou]\n/
+	//\![*]\q[Yuri On Ice,animeyuri]\n/
+	//\![*]\q[Sasaki and Miyano,animesm]\n/
+	\n/
+	\![*]\q[Back?,openjournal]\n/
+	\![*]\q[Nevermind,CANCEL]"
+}
+
+Select.animesk8
+{
+	"\0\s[104]Ok,\w4 so %(i)technically%(d) Sk8 the Infinity isn't a queer anime.\w4\x\c\s[109]But you cannot look at these character's interactions and tell me they are completely hetero!\w4\x\c\s[101]Anyway, you might look at this and say 'It's just another queer-baiting sports anime',\w4\s[0] but I swear it's not!\w4\x\c\s[102]The story is genuinely so sweet and the characters are very lovable.\w4\x\c\s[106]Plus!\w8 They're getting a second season!\w4\x\c\s[0]So,\w4 yeah.\w8 Give it a shot.\w4\n\n[half]/
+	\![*]\q[Back?,animerecs]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.animedou
+{
+	"\b2\![set,autoscroll,disable]\_q- DOUKYUUSEI -\n/
+	%(r)%(i)May contain spoilers.%(d)\n\n[half]/
+	Summary:\n/
+	%(r)Rihito Sajō%(d) and %(r)Hikaru Kusakabe%(d) are classmates at an all boys school. They end up bumping into each other when Sajō stays back to practice singing for the upcoming choirs festival. Kusakabe offers to help him practice and with that the boys unlikely friendship begins. As time goes on, their relationship begins to turn into something else.\n\n[half]/
+	Content Warnings:\n/
+	%(r)Dubious consent, teacher coming onto a student, light sexual content, comical violence, mild drug use%(d)\n\n[half]/
+	Other Notes:\n/
+	I really like the artstyle, it's pretty and feels different from the typical 'anime' artstyle.\n\n/
+    \![*]\q[Back?,animerecs]\n"
+}
+
+Select.animeyuri
+{
+}
+
+Select.animesm
+{
+	"\0\s[0]Sasaki and Miyano is actually an anime I only got into recently.\w8 It's actually really good!\w4\x\c\s[101]It's super cheesy at times but I think that's part of what makes it so enjoyable.\w4\x\c\s[100]And the ending is super satisfying,\w4\s[0] which is nice since there are a lot of animes with endings that leave you feeling as if the show was unfinished.\w4\x\c\s[102]The ending is also just super soft which I like.\w4\x\c\s[0]From what research I've done it also seems like the show will be getting a second season too!\w4\x\cOk,\w4 that's all.\w8\s[111] Just go watch it!\w4\n\n[half]/
+	\![*]\q[Back?,animerecs]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}

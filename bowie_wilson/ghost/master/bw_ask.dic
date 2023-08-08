@@ -1,0 +1,518 @@
+// /*
+ // █████  ███████ ██   ██     ███    ███ ███████ ███    ██ ██    ██ 
+// ██   ██ ██      ██  ██      ████  ████ ██      ████   ██ ██    ██ 
+// ███████ ███████ █████       ██ ████ ██ █████   ██ ██  ██ ██    ██ 
+// ██   ██      ██ ██  ██      ██  ██  ██ ██      ██  ██ ██ ██    ██ 
+// ██   ██ ███████ ██   ██     ██      ██ ███████ ██   ████  ██████                                                      
+ // */
+//If the user chooses to ask a question
+
+Select.askquestions
+{
+	"\b2\i[10]\_q* (You ask him about...)\n\n[half]/
+	\![*]\q[Himself,askaboutbowie]\n\n[half]/
+	//\![*]\q[LGBT Anime Reccs?,askopinionanime]\n\n/
+	// \![*]\q[Martin,askaboutmartin]\n/
+	// \![*]\q[Astro,askaboutastro]\n/
+	// \![*]\q[Darren,askaboutdarren]\n/
+	// \![*]\q[Tiana,askabouttiana]\n\n/
+	* (Or you can ask him to...)\n\n[half]/
+	// \![*]\q[Tell you a joke,asktelljoke]\n/
+	\![*]\q[Tell you a fun fact,asktellfunfact]\n\n/
+	// \![*]\q[Comfort you,askcomfort]\n\n/
+	\![*]\q[Back?,backtomenu]\n/
+	\![*]\q[Nevermind,CANCEL]"
+}
+
+Select.backtomenu
+{
+   MenuRun
+}
+
+
+// ██████   ██████  ██     ██ ██ ███████ 
+// ██   ██ ██    ██ ██     ██ ██ ██      
+// ██████  ██    ██ ██  █  ██ ██ █████   
+// ██   ██ ██    ██ ██ ███ ██ ██ ██      
+// ██████   ██████   ███ ███  ██ ███████
+// -- Ask about Bowie menu -----------------------------------------------------------------------------------------------
+
+Select.askaboutbowie
+{
+	"\b2\i[10]\_q* (...)\n\n[half]/
+	//\![*]\q[How are you?,askmood]\n/
+	\![*]\q[Favourites?,askaboutfavs]\n/
+	//\![*]\q[Either Or Questions?,askeitheror]\n/
+	//\n[half]/
+	\![*]\q[Taste in music?,askmusic]\n/
+	\![*]\q[His jacket?,askjacket]\n/
+	\![*]\q[His age?,askage]\n/
+	//\![*]\q[His gender?,askgender]\n/ //unlockable
+	//\![*]\q[His pronouns?,askpronouns]\n/ //unlockable
+	//\![*]\q[His job?,askjob]\n/ //unlockable
+	\![*]\q[His piercings?,askearrings]\n/
+	\![*]\q[Hobbies?,askhobbies]\n/
+	//\![*]\q[How's school?,askhowsschool]\n/
+	//\![*]\q[When's your birthday?,askbirthdays]\n/
+	//\![*]\q[His Dad,askdad]\n/ //unlockable
+	//\![*]\q[His Mum,askmum]\n/ //unlockable
+	\n[half]/
+	\![*]\q[Back?,askquestions]\n/
+	\![*]\q[Nevermind,CANCEL]"
+}
+
+Select.askmood
+{
+	if timeslot == "latenight" // 9 to 12
+	{
+		"Tired Dialogue"
+	}
+	else
+	{
+	    if RAND(100) < 80
+	    {
+		    "Good Dialogue"
+	    }
+	    else
+	    {
+		    "Sad Dialogue"
+		    "Frustrated Dialogue"
+		    "Meh Dialogue"
+	    }
+	}
+}
+
+//{
+Select.askaboutfavs
+{
+    "\b2\i[10]\i[202]\_q* (You ask him about his favourite...)\n\n[half]/
+	\![*]\q[Colour?,askfavcolour]\n/
+	\![*]\q[Book?,askfavbook]\n/
+	\![*]\q[Movie?,askfavmovie]\n/
+	\![*]\q[Comic?,askfavcomic]\n/
+	\![*]\q[Anime?,askfavanime]\n/
+	\![*]\q[Video Game?,askfavvidgame]\n/
+	\![*]\q[Band?,askfavband]\n/
+	//\![*]\q[Favourite subject in school?,askfavsubjectschool]\n/
+	\![*]\q[Season?,askfavseason]\n/
+	//\![*]\q[Favourite weather?,askfavweather]\n/
+	//\![*]\q[Favourite person?,askfavperson]\n/
+	\![*]\q[Food?,askfavfood]\n/
+	//\![*]\q[Safe foods?,asksafefood]\n/
+	\n[half]/
+	\![*]\q[Back?,askaboutbowie]\n/
+	\![*]\q[Nevermind,CANCEL]"
+}
+//{
+Select.askfavcolour
+{
+	"\0\s[0]\i[39]\i[28]\i[33]\i[301]\i[201]I know it's kinda obvious,\w4 but its red.\n\n\w8\w4\i[107]\i[27]But mostly this specific type of red on my jacket.\n\n\w8\i[110]\i[20]\i[28]\i[35]I don't like reds that are\nsuper bright.\w8\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavbook
+{
+	"\0\s[0]\i[111]\i[31]\i[33]\i[201]My favourite book is Carry On by Rainbow Rowell.\w8\n\n\i[19]\i[28]I'm such a sucker for enemies to lovers.\w8\n\n\i[108]\i[23]\i[112]I'd recommend it if you're into fantasy and romance,\w4\i[28] but I like that the plot doesn't revolve around just the romance,\w4\i[112] there's tons of other stuff going on too.\i[111]\w8\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+	
+Select.askfavmovie
+{
+	"\0\s[0]\i[108]\i[18]\i[31]\i[33]\i[201]\i[202]My favourite movie would have to be 'Shrek 2'.\w8\n\n\i[23]\i[112]\i[301]You may laugh,\w4 but that movie is written very well and is enjoyable at any age,\w4 in my opinion.\w8\n\n\i[110]\i[18]\i[31]\i[202]Also,\w4 the music is AMAZING!\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavcomic
+{
+	"\0\s[0]\i[18]\i[31]\i[33]\i[201]\i[202]Defintely 'Heartstopper'.\w8\n\n\i[108]\i[23]\i[112]\i[301]\i[200]It even has a netflix adaptation now!\w8\n\n\i[111]\i[31]\i[201]It's really enjoyable and SO adorable.\w8\n\n\i[110]\i[112]You should really check it out\nif you haven't!!\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavanime
+{
+	"\0\s[0]\i[18]\i[31]\i[33]\i[201]\i[202]Oh,\w4 definitely 'Sk8 the Infinity!'\w8\n\n\i[111]\i[29]\i[301]It's the anime that inspired me to start skating myself!\w8\n\n\i[111]\i[31]\i[35]I'm not as good as those\nguys,\w4\i[112]\i[33] but I can do some\nbasic tricks.\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavvidgame
+{
+	"\0\s[0]\i[18]\i[31]\i[33]\i[202]\i[201]I looooooove Animal Crossing!\w8\n\n\i[111]\i[29]\i[301]I've been playing New Horizons since it came out.\w8\n\n\i[112]\i[113]My favourite villager is\nprobably Lucky.\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavband
+{
+	"\0\s[0]\i[301]\i[110]\i[28]\i[35]\i[201]Hm,\w4 well I listen to a variety of music,\w4\i[33] but I guess the band I listen to the most is MCR\w8.\i[20]\i[112]\i[113]\i[20]\i[112]\i[113]\w8.\w8.\w8\w8\w8\n\n\i[23]\i[31]\i[38]\i[201]Don't look at me like that!\w8\w8\n\n\i[28]I'm not emo!!\i[20]\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavsubjectschool
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavseason
+{
+	"\0\s[0]\i[301]Autumn.\w8\n\n\i[28]\i[201]It's not too warm, not too cold.\w8\n\n\i[108]\i[112]Preferably late Autumn,\w8 cus i prefer the cold but I don't\nlike being freezing,\w8 ya know?\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavweather
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavperson
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askfavfood
+{
+	DiscoveredFavouriteFood = 1
+	"\0\i[301]\i[108]\i[31]\i[33]\i[201]My favourite food is sandwiches.\w8\n\n\i[112]Cus like, there's so many combinations of fillings.\w8\n\n\i[110]\i[30]I really like vegemite and\ncheese the most.\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+	
+Select.asksafefood
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+//}
+Select.askeitheror
+{
+	"\b2\i[10]* (...)\n\n[half]/
+	\![*]\q[Water or soda?,askwaterorsoda]\n\n[half]/
+	\![*]\q[Back?,askaboutbowie]\n/
+	\![*]\q[Nevermind,CANCEL]"
+}
+//{
+Select.askwaterorsoda
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+//}
+
+Select.askmusic
+{
+	"\0\s[0]\i[21]\i[33]Hm, my music taste huh?\w8\n\n\i[113]\i[111]Well you can get an idea of what music I like from \_a[https://open.spotify.com/playlist/7nIBtN4nghCJUZymne3oxp?si=6423bfb4ea6c4567]my playlist\_a.\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askjacket
+{
+	"\0\s[0]\i[111]\i[35]My jacket?\w8\n\n\i[108]\i[21]\i[27]\i[113]\i[201]This is my favourite jacket, I rarely take it off.\w8\n\n\i[110]\i[111]\i[112]\i[33]It's very comfy!\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askage
+{
+	"\0\s[0]I'm 19.\w4.\w4.\w8\n\i[21]\i[27]\i[33]\i[201]Damn,\w4 can't believe I'm 19 already.\w4.\w4.\w4\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askearrings
+{
+	"\0\s[0]\i[108]I got my ears pierced when I was pretty young,\w4 so I don't really remember it.\w8\n\n\i[110]\i[28]\i[37]\i[201]I'm glad I got it done\nthough,\w4 cus I'd be way\ntoo scared to do it now.\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askhobbies
+{
+	"\0\s[0]\i[35]My hobbies?\w8\n\n\i[111]\i[33]My main ones gotta be skateboarding.\w8\n\n\i[110]\i[18]\i[31]\i[202]\i[201]My friends and I go skating pretty much whenever we're free and the weathers good.\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askhowsschool
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askbirthdays
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askdad 
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askmum
+{
+	"\0\s[0]ReplaceDialogue\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+//}
+// -- End of ask about Bowie menu ------------------------------------------------------------------------------------------------
+
+// ███    ███  █████  ██████  ████████ ██ ███    ██ 
+// ████  ████ ██   ██ ██   ██    ██    ██ ████   ██ 
+// ██ ████ ██ ███████ ██████     ██    ██ ██ ██  ██ 
+// ██  ██  ██ ██   ██ ██   ██    ██    ██ ██  ██ ██ 
+// ██      ██ ██   ██ ██   ██    ██    ██ ██   ████
+
+Select.askaboutmartin
+{
+	if AskedAboutMartin == 0
+	{
+    AskedAboutMartin = 1
+	love += 5
+	"\0\s[0]Dialogue for when you first ask about him."
+	//dialogue here would be stuff that shows up in the journal
+	}
+	else
+	{
+	"\0\s[0]Dialogue for if youve asked about him."
+	//later have this link to a function for dialogue pools for asking about martin at different times of day, seasons, stuff like that
+	--
+	"\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+	}
+}
+
+
+//  █████  ███████ ████████ ██████   ██████  
+// ██   ██ ██         ██    ██   ██ ██    ██ 
+// ███████ ███████    ██    ██████  ██    ██ 
+// ██   ██      ██    ██    ██   ██ ██    ██ 
+// ██   ██ ███████    ██    ██   ██  ██████ 
+
+Select.askaboutastro
+{
+	if AskedAboutAstro == 0
+	{
+    AskedAboutAstro = 1
+	love += 5
+	"\0\s[0]Dialogue for when you first ask about him."
+	//dialogue here would be stuff that shows up in the journal
+	}
+	else
+	{
+	"\0\s[0]Dialogue for if youve asked about him."
+	//later have this link to a function for dialogue pools for asking about Astro at different times of day, seasons, stuff like that
+	--
+	"\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+	}
+}
+
+
+// ██████   █████  ██████  ██████  ███████ ███    ██ 
+// ██   ██ ██   ██ ██   ██ ██   ██ ██      ████   ██ 
+// ██   ██ ███████ ██████  ██████  █████   ██ ██  ██ 
+// ██   ██ ██   ██ ██   ██ ██   ██ ██      ██  ██ ██ 
+// ██████  ██   ██ ██   ██ ██   ██ ███████ ██   ████ 
+
+Select.askaboutdarren
+{
+	if AskedAboutDarren == 0
+	{
+    AskedAboutDarren = 1
+	love += 5
+	"\0\s[0]Dialogue for when you first ask about him."
+	//dialogue here would be stuff that shows up in the journal
+	}
+	else
+	{
+	"\0\s[0]Dialogue for if youve asked about him."
+	//later have this link to a function for dialogue pools for asking about darren at different times of day, seasons, stuff like that
+	--
+	"\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+	}
+}
+
+
+// ████████ ██  █████  ███    ██  █████  
+   // ██    ██ ██   ██ ████   ██ ██   ██ 
+   // ██    ██ ███████ ██ ██  ██ ███████ 
+   // ██    ██ ██   ██ ██  ██ ██ ██   ██ 
+   // ██    ██ ██   ██ ██   ████ ██   ██ 
+
+Select.askabouttiana
+{
+	if AskedAboutTiana == 0
+	{
+    AskedAboutTiana = 1
+	love += 5
+	"\0\s[0]Dialogue for when you first ask about her."
+	//dialogue here would be stuff that shows up in the journal
+	}
+	else
+	{
+	"\0\s[0]Dialogue for if youve asked about her."
+	//later have this link to a function for dialogue pools for asking about tiana at different times of day, seasons, stuff like that
+	--
+	"\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+	}
+}
+
+
+// // ██   ██ ██ ██████  ██████  ███████ ███    ██     ███████ ████████ ██    ██ ███████ ███████ 
+// // ██   ██ ██ ██   ██ ██   ██ ██      ████   ██     ██         ██    ██    ██ ██      ██      
+// // ███████ ██ ██   ██ ██   ██ █████   ██ ██  ██     ███████    ██    ██    ██ █████   █████   
+// // ██   ██ ██ ██   ██ ██   ██ ██      ██  ██ ██          ██    ██    ██    ██ ██      ██      
+// // ██   ██ ██ ██████  ██████  ███████ ██   ████     ███████    ██     ██████  ██      ██ 
+
+// Select.talktohim
+// {
+	// "\0\s[0]\i[10]* (You ask him a question...)\w8\![open,inputbox,OnTellStuff,-1]\e"
+// }
+
+// OnTellStuff
+// {
+	// reference0 = TOLOWER(reference0) //changes it to lowercase
+	
+	// if reference0 == "who turgled?"
+	// {
+		// "\0\s[0]TurgleTurgle.\n\n[half]/
+	    // \![*]\q[Ask something else?,askquestions]\n/
+	    // \![*]\q[Nevermind,closemenu]\n"
+	// }
+	// elseif reference0 == "opinion on bananas?"
+	// {
+		// "\0\s[0]Potassium.\n\n[half]/
+	    // \![*]\q[Ask something else?,askquestions]\n/
+	    // \![*]\q[Nevermind,closemenu]\n"
+	// }
+	// elseif reference0 == "who is bones?"
+	// {
+		// "\0\s[0]Who... who...\n\n[half]/
+	    // \![*]\q[Ask something else?,askquestions]\n/
+	    // \![*]\q[Nevermind,closemenu]\n"
+		// //insert surfaces changing and going into 'bones' mode
+	// }
+	// else
+	// {
+		// "\0\s[0]* (Seems that's not one of the hidden questions.)"
+		// //Maybe add dialogue like: "You wonder if theres somewhere that could give you the questions to ask" but make that not sound dumb or wtv
+	// }
+// }
+
+Select.askopinionanime
+{
+	"\0\s[0]I love anime!\w8There's so many different genres and styles,\w4 it's as diverse as western cartoons!\w8\x\cI mostly enjoy watching queer or queer-coded animes when it comes to the romance genre.\w8\x\cBut I especially like animes that don't necessarily focus on romance,\w4 but more so the non-romantic aspects of the characters relationships.\w8 But maybe that's just cus I'm a-spec.\w8\x\cAnyway,\w4 did you want any queer anime recommendations?\w4\n\n[half]/
+	\![*]\q[Yeah!,animerecyes]\n/
+	\![*]\q[Nah,animerecno]\n"
+}
+
+Select.animerecno
+{
+	"\0\s[0]Ok,\w4 that's cool.\w8\x\cIf you want any recommandations later,\w4 feel free to just ask!\w4\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.animerecyes
+{
+	animerecon = 1
+	
+	"\0\s[0]Really!?\w8 Awesome!\w8\x\cLemmie just write them down in your journal for safekeeping,\w4 so you can come back to it any time you need.\w4\n\n[half]/
+	\![*]\q[Ask something else?,askquestions]\n/
+	\![*]\q[Open Journal?,openjournal]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.asktelljoke
+{
+	
+}
+
+Select.asktellfunfact : nonoverlap
+{
+	"Sunsets on Mars are blue!\w8\n\nYou should Google it, it's very pretty."
+	"People can have a psychological disorder called Boanthropy\w4 that makes them believe that they are a cow."
+	"It took the creator of the\nRubik’s Cube,\w4 Erno Rubik,\w4 one month to solve the cube after creating it.\x\cAs of November 2018,\w4 the world record for a 3x3x3 cube is 3.47 seconds, held by Yusheng Du.\w8\n\nIt was the first sub-4 second record!\x\cHowever,\w4 Max Park (as of 15th August 2022)\w4 holds records from 4x4x4 to 7x7x7.\w8\n\nCurrently he owns 9 world records according to WCA."
+	"Tigers have striped skin,\w4 not just striped fur.\w8\n\nThe stripes are like fingerprints,\w4 no two tigers have the same pattern."
+	"There is an opposite of albino animals,\w4 which aren’t white,\w4 but black.\w8\n\nThese are known as Melanistic animals."
+	--
+	"\n\n[half]\![*]\q[Back?,askquestions]\n/
+	\![*]\q[Nevermind,closemenu]\n"
+}
+
+Select.askcomfort
+{
+//	"Hey%(mandude).\w8 You not feeling so great rn?\w8\n\n* (He goes to hold you hands.)\w8\n\nIt's gonna be okay.\w8 It's gonna get better,\w8 I promise.\w8\n\n As someone who's gone through some really hard shit,\w8 it's gonna be ok, trust me."
+	
+	"\0\s[0]\i[10]* (You tell him you aren't feeling great.)\n\n\w8\i[1]Hey,\w8 it's ok.\w8 You wanna vent about it a bit?\n\n[half]/
+	\![*]\q[Yeah,comfortvent]\n/
+	\![*]\q[No I just need verbal comfort,comfortverbal]\n/
+	\![*]\q[No I just need physical comfort,comfortphysical]\n"
+}
+
+Select.comfortvent
+{
+	"\0\s[0]\i[10]* (He waits patiently.)\![open,inputbox,OnComfortVenting,-1]"
+}
+
+OnComfortVenting
+{
+	"\0\s[0]\i[10]* (He seems to be listening carefully.)\n\n\i[1]I see.\w8\nDo you want verbal or physical comfort?\n\n/
+	\![*]\q[No I don't want comfort right now,comfortno]\n/
+	\![*]\q[Verbal comfort,comfortverbal]\n/
+	\![*]\q[Physical comfort,comfortphysical]\n"
+}
+
+Select.comfortverbal
+{
+	"\0\s[0]Do you want specific or more general comfort?\n\n/
+	\![*]\q[Specific,comfortverbalspecific]\n/
+	\![*]\q[General,comfortverbalgeneral]\n"
+}
+
+Select.comfortphysical
+{
+	
+}
+
+Select.comfortno
+{
+	"\0\s[0]That's ok.\w8\n\nStill,\w8 I hope you feel better soon %(username)."
+}
+
+Select.comfortverbalspecific
+{
+	
+}
+
+Select.comfortverbalgeneral
+{
+	
+}

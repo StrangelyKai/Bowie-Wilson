@@ -1,0 +1,800 @@
+﻿/*
+██     ██  ██████  ██████  ██████  
+██     ██ ██    ██ ██   ██ ██   ██ 
+██  █  ██ ██    ██ ██████  ██   ██ 
+██ ███ ██ ██    ██ ██   ██ ██   ██ 
+ ███ ███   ██████  ██   ██ ██████                                      
+ */
+
+
+//---------------------------Envelopes--------------------------
+
+
+	  //One particularly useful thing you can do is add value changes to an envelope, if your dialogue is in a place where it's not easy to add the change directly. For example...
+	  
+	  //FeelingsGoUp
+	  //{
+	  //Feelings += 1
+	  //"Thank you, %(username), that was really nice of you.\e"
+	  //}
+	  
+	  //So this would display the dialogue as well as change the value. Then you can call this in dialogue if you need to to change the value without having to do a bunch of fiddly business. Specifically I'm thinking about things like RandomTalk, where it can be finicky to have dialogue that also changes a value like this. Like "Oh... wow... %(FeelingsGoUp\e" could go into RandomTalk and still change the value effectively without breaking anything. You can of course also change multiple values at once, and if you don't put dialogue in there, it will change the value invisibly.
+	  
+	  //Another use for these envelopes is to shortcut certain long lines of SakuraScript you don't want to have to keep typing. A good example is if you want to change the font for a character. Take Papyrus from my Gaster ghost, he talks in the font Papyrus. But I don't want to have to type the tag for it for every line of dialogue he does. So instead I can put it in an envelope.
+	  
+	  //p
+	//	{
+	//	"\f[name,Papyrus UT]\f[height,16]"
+	//	}
+		
+		//And then I can make one that'll change the font back to normal.
+		
+	//	d
+	//{
+	//"\f[name,default]\f[height,default]"
+	//}
+	
+	//So in dialogue, to change fonts I'd just have to go "%(p)HEY THERE!%(d)" to change fonts back and forth quickly. These kind of shortcuts can be very useful.
+	
+	//Another way to use envelopes is to store multiple poses for SurfaceRestore in aitalk.dic. Gaster for example has several neutral idle poses, but also several poses for when he's scared. So I can make an envelope like
+	
+	//scared
+	//{
+	//"\0\s[9]\i[3]\i[104]\i[39]"
+	//"\0\s[100]\i[2]\i[40]\i[104]"
+	//"\0\s[100]\i[2]\i[40]\i[106]"
+	//}
+	
+	//And have him randomly pick one whenever I use %(scared) in dialogue. This can be an easy way to vary certain poses without having to manually put them in one at a time, and have some variety when your ghost goes back to its neutral pose in SurfaceRestore.
+		
+	  //***********************************************************************
+
+yellow
+{
+	"\f[color,255,255,0]"
+}
+
+d
+{
+	"\f[color,default]\f[italic,false]"
+}
+
+r
+{
+	"\f[color,207,63,40]"
+}
+
+i
+{
+	"\f[italic,true]"
+}
+
+
+drinkorsnack
+{
+	"drink"
+	"snack"
+}
+
+mandude
+{
+	if mandudegood == 1
+	{
+	    " man"
+	    " dude"
+	    " bro"
+		" mate"
+	    ""
+	    ", %(username)"
+	}
+	else
+	{
+		""
+		" %(username)"
+	}
+}
+
+tianafood : nonoverlap
+{
+	"cupcakes"
+	"choc-chip cookies"
+	"brownies"
+	"quesadillas"
+	"oreo-cheesecake balls"
+	"cinnamon buns"
+	"cheesecake"
+	"white chocolate cheesecake"
+	"%(cakeflavours) cake"
+	"lamingtons"
+	"homemade bread"
+	"%(sandwichstuff) sandwiches"
+	"dutch pancakes"
+	"fairybread"
+	"meat pies"
+	"pavlova"
+}
+
+cakeflavours : nonoverlap
+{
+	"vanilla"
+	"chocolate"
+	"chocolate mud"
+	"white chocolate mud"
+	"red velvet"
+	"black forest"
+	"chocolate marble"
+	"chocolate mousse"
+}
+
+sandwichstuff
+{
+	"%(sandwichalone)"
+	"%(sandwichmix) and %(sandwichmix)"
+	"%(sandwichmix), %(sandwichmix) and %(sandwichmix)"
+}
+
+sandwichmix : nonoverlap
+{
+	"cheese"
+	"ham"
+	"chicken"
+	"lettuce"
+	"cucumber"
+}
+
+sandwichalone : nonoverlap
+{
+	"cheese"
+	"ham"
+	"vegemite"
+	"chicken"
+	"nutella"
+	"ice-cream"
+}
+
+sleepmumb
+{
+	"...\w8"
+	--
+	"zzz"
+	"mmm"
+	"mmh"
+	"mmz"
+	"hmm"
+	"hm"
+	"zz"
+	"zhh"
+	"zzh"
+	"mm"
+	"zmm"
+	"zhm"
+	"hmmz"
+	"mmf"
+	"fmm"
+	"zrmm"
+	"zzzm"
+	"mmn"
+	"mmhn"
+	"zll"
+	"lmm"
+	"fnn"
+	"hnn"
+	"hmn"
+	"zmn"
+	"mrr"
+	"mff"
+	--
+	"\w8...\w8"
+	--
+	"zzz"
+	"mmm"
+	"mmh"
+	"mmz"
+	"hmm"
+	"hm"
+	"zz"
+	"zhh"
+	"zzh"
+	"mm"
+	"zmm"
+	"zhm"
+	"hmmz"
+	"mmf"
+	"fmm"
+	"zrmm"
+	"zzzm"
+	"mmn"
+	"mmhn"
+	"zll"
+	"lmm"
+	"fnn"
+	"hnn"
+	"hmn"
+	"zmn"
+	"mrr"
+	"mff"
+	--
+	"...\w8"
+}
+
+waking
+{
+	"\![set,balloonwait,2]"
+	--
+	"%(sleepmumb)?\n\w8\s[0]Huh?"
+	"%(sleepmumb)?\n\w8\s[0]%(username)?"
+	"%(sleepmumb)?\n\w8\s[0]Hm?"
+	--
+	asleep = 0
+}
+
+mumbling : nonoverlap
+{
+	_numb = RAND(20)
+	_adds = adds(_numb)
+	
+	_colour = colour
+    _colourtype = colourtype(_colour) //Tells colourtype what colour was picked, so it can choose a prefix appropriately
+    _a = "a"
+    if _colour == "orange" && _colourtype == ""; _a = "an"
+
+    "...said %(randheshe) wanted %(_a) %(_colourtype)%(_colour) %(randclothes)..."
+    //"%(strangemathproblem)"
+	"I should ask %(randhimher) about that next time..."
+	"Was that %(randhishers)?\w8 I should probably ask..."
+	"I should give back %(randfriend)'s %(randclothes)..."
+	"...and if I %(bowiemathmumble) %(_numb)..."
+	"I think that belongs to %(randhimher)..."
+	"I wonder if I can get that %(randclothes) back from %(randfriend)..."
+	"I should ask Tiana to make some %(tianafood)..."
+	"Hmm,\w8 but we played %(game) last week..."
+	"...should ask if %(randheshe) want%(adds) %(tianafood) or %(tianafood)..."
+}
+
+colourtype
+{
+  _colour = _argv[0] //The _colour from the mumbling function is sent in as _argv[0]! So this is just temporarily storing it in _colour so it's nicer to write
+
+  if _colour == "black" || _colour == "white"
+  {
+    ""
+  }
+  elseif _colour == "grey"
+  {
+    ""
+    "light "
+    "dark "
+  }
+  else
+  {
+    ""
+    "dark "
+    "pastel "
+  }
+}
+
+aoran
+{
+	if colour == "orange" && colourtype == ""
+	{
+		"an"
+	}
+	else
+	{
+		"a"
+	}
+}
+
+adds
+{
+	_numb = _argv[0]
+	
+	if (randheshe == "he" || "she") // || (_numb => 2)
+	{
+		"s"
+	}
+	else
+	{
+		""
+	}
+}
+
+colour : nonoverlap
+{
+	"red"
+	"orange"
+	"yellow"
+	"green"
+	"blue"
+	"purple"
+	"pink"
+	"grey"
+	"black"
+	"white"
+}
+
+strangemathproblem : nonoverlap
+{
+	"... but if %(mathperson) bought %(_numb) %(mathitem),\w8 how many would %(mathperson) get?"
+	"... if %(randheshe) sold %(_numb) %(mathitem) for $%(_numb)... how much would the total profit be?"
+	"... so if %(mathperson) and %(mathperson) took %(_numb) %(mathtime)%(_adds) to get to %(mathplace), what time would it be when they get there?"
+}
+
+mathplace
+{
+	"the shopping center"
+	"the fish and chip store"
+	"the music shop"
+	"McDonalds"
+}
+
+mathtime
+{
+	"minute"
+	"hour"
+}
+
+mathitem
+{
+	if _numb == 1
+	{
+		"%(mathitemsingular)"
+	}
+	else
+	{
+		"%(mathitemplural)"
+	}
+}
+
+mathperson : nonoverlap
+{
+	"%(mathpersonref)"
+	"Sophia"
+	"Sophie"
+	"Olivia"
+	"Ollie"
+	"Madison"
+	"Maddie"
+	"Emma"
+	"Jacob"
+	"Jakob"
+	"Jay"
+	"Ethan"
+	"Jack"
+	"Jackson"
+	"Samuel"
+	"Samantha"
+	"Sam"
+	"Isabella"
+	"Isabelle"
+	"Michael"
+	"Mitchell"
+	"Jayden"
+	"Lily"
+	"Ruby"
+	"Rudy"
+	"Charlotte"
+	"Charlie"
+	"Chloe"
+	"Will"
+	"William"
+	"Addison"
+	"Jane"
+	"Nat"
+	"Robert"
+	"Timmy"
+	"Jimmy"
+	"Noah"
+	"Dan"
+	"Daniel"
+	"Aiden"
+	"Abigail"
+	"Harry"
+	"Larry"
+	"Lisa"
+	"Marshall"
+	"Ken"
+	"Kent"
+	"Joe"
+	"Carl"
+}
+
+mathpersonref : nonoverlap
+{
+	"Spamton"
+	"S"
+	"Gaster"
+	"Dante"
+	"Sebastian"
+	"Wilson"
+	"Sans"
+	"Papyrus"
+	"Temmie"
+}
+
+mathitemsingular : nonoverlap
+{
+	"carrot"
+	"copy of %(videogame)"
+}
+
+mathitemplural : nonoverlap
+{
+	"carrots"
+	"potatoes"
+	"boxes"
+	"bags"
+	"jackets"
+	"pairs of socks"
+	"shirts"
+	"pairs of jeans"
+	"pillows"
+	"oranges"
+	"apples"
+	"pears"
+	"laptops"
+	"weeks of discord nitro"
+	"copies of '%(videogame)'"
+}
+
+game
+{
+	"%(videogame)"
+	"Monopoly"
+}
+
+videogame : nonoverlap
+{
+	"Call of duty"
+	"Shrek 2: The movie: The game"
+	"Undertale"
+	"Five Nights at Freddys"
+	"Sonic Boom"
+	"Animal Crossing: New Horizons"
+	"Animal Crossing: New Leaf"
+	"Mario Kart"
+	"Splatoon 2"
+}
+
+bowiemathmumble : nonoverlap
+{
+	"divide that by"
+	"add"
+	"subtract"
+	"multiply that by"
+}
+
+randfriend : nonoverlap
+{
+	"Astro"
+	"Martin"
+	"Darren"
+	"Tiana"
+}
+
+randclothes : nonoverlap
+{
+	"shirt"
+	"jacket"
+	"jumper"
+	"sweater"
+	"tank top"
+	"hoodie"
+	"belt"
+}
+
+randhishers
+{
+	"his"
+	"hers"
+	"theirs"
+}
+
+randheshe
+{
+	"he"
+	"she"
+	"they"
+}
+
+randhimher
+{
+	"him"
+	"her"
+	"them"
+}
+
+bowiesinging : nonoverlap
+{
+	"%(millionsgway)"
+	"%(bestfriendroc)"
+	"%(aguythatbmc)"
+	"%(mammamiaabba)"
+	"%(puppyprincesshf)"
+	"%(babyyoureagway)"
+	"%(electricloveborns)"
+	"%(theonlyhopeformemcr)"
+	"%(togetherinelectric)"
+}
+
+millionsgway
+{
+	heardmillions = 1
+	--
+	"A million reasons,\w8 but I need a million moreeeeee~" //Millions - Gerard Way
+}
+
+bestfriendroc
+{
+	heardbestfriend = 1
+	--
+	"I wanna be your favourite boyyyy,\w8 I wanna be the one that makes your day..."//Best Friend - Rex Orange County
+}
+
+aguythatbmc
+{
+	heardaguythat = 1
+	--
+    "From a guyyyy that you'd never be into,\w8 into a guyyyy that\nyou'd kinda be into..." //A Guy That I'd Kinda Be Into - Be More Chill (dev note: i've never watched BMC i just like some of the songs)
+}
+
+mammamiaabba
+{
+	heardmammamia = 1
+	--
+	"Mamma mia,\w8 here I go again,\w8 my, my,\w8 how can I resist ya?" //Mamma Mia - Abba (but actually the specific cover done by Austin Weber)
+}
+
+puppyprincesshf
+{
+	heardpuppyprincess = 1
+	--
+	"Kissssss me,\w8 kiss me with your eyeees closed~" //Puppy Princess - Hot Freaks
+}
+
+babyyoureagway
+{
+	heardbabyyoura = 1
+	--
+	"Baby, you're a haunted house,\w8 better find another superstition~" //Baby You're a Haunted House - Gerard Way
+}
+
+electricloveborns
+{
+	heardelectriclove = 1
+	--
+	"Baby, you're like lightning in a bottle,\w8 I can't let you go now that I got it..." //Electric Love - Børns
+}
+
+theonlyhopeformemcr
+{
+	heardtheonlyhopeforme = 1
+	--
+	"Can I be the only hope for youuuu?\w8 Because you're the only hope for meeeee!" //The Only Hope for Me Is You - My Chemical Romance
+}
+
+togetherinelectric
+{
+	heardtogetherinelectric = 1
+	--
+    "We'll always be together,\w8\nHowever far it seems,\w8\nWe'll always be together,\w8\nTogether in electric\ndreeeeeeams~" //Together in Electric Dreams - Electric Dreams (dev note: such an amazing movie please watch it if you havent)
+}
+
+// bowiesinging
+// {
+	// "A million reasons,\w8 but I need a million moreeeeee~" //Millions - Gerard Way
+	// "I wanna be your favourite boyyyy,\w8 I wanna be the one that makes your day..."//Best Friend - Rex Orange County
+	// "From a guyyyy that you'd never be into,\w8 into a guyyyy that\nyou'd kinda be into..." //A Guy That I'd Kinda Be Into - Be More Chill (dev note: i've never watched BMC i just like some of the songs)
+	// "Mamma mia,\w8 here I go again,\w8 my, my,\w8 how can I resist ya?" //Mamma Mia - Abba (but actually the specific cover done by Austin Weber)
+	// "Kissssss me,\w8 kiss me with your eyeees closed~" //Puppy Princess - Hot Freaks
+	// "Baby, you're a haunted house,\w8 better find another superstition~" //Baby You're a Haunted House - Gerard Way
+	// "Baby, you're like lightning in a bottle,\w8 I can't let you go now that I got it..." //Electric Love - Børns
+	// "Can I be the only hope for youuuu?\w8 Because you're the only hope for meeeee!" //The Only Hope for Me Is You - My Chemical Romance
+	// "We'll always be together,\w8\nHowever far it seems,\w8\nWe'll always be together,\w8\nTogether in electric\ndreeeeeeams~" //Together in Electric Dreams - Electric Dreams (dev note: such an amazing movie please watch it if you havent)
+// }
+
+tds
+{
+	"\w5\s[124]\w5\s[125]"
+}
+
+eating
+{
+	"\0\s[0]%(tds)%(tds)%(tds). %(tds)%(tds)%(tds) . %(tds)%(tds)%(tds) . %(tds)%(tds)%(tds)\w2\s[111]\n\nAll done!"
+}
+
+knowbowieage
+{
+	if knowbowieagev == 1
+	{
+		"19"
+	}
+	else
+	{
+		"???"
+	}
+}
+
+knowbowiepronouns
+{
+	if knowbowiepronounsv == 1
+	{
+		"He/They"
+	}
+	else
+	{
+		"He/Him"
+	}
+}
+
+knowbowiebday
+{
+	if knowbowiebdayv == 1
+	{
+		"Insert Birthday Here"
+	}
+	else
+	{
+		"???"
+	}
+}
+
+knowbowieidentity
+{
+	if knowbowieidentityv == 1
+	{
+		"Trans-Masc Demiboy"
+	}
+	else
+	{
+		"???"
+	}
+}
+
+knowbowiesexuality
+{
+	if knowbowiesexualityv == 1
+	{
+		"Unlabled"
+	}
+	else
+	{
+		"???"
+	}
+}
+
+knowbowieocc
+{
+	if knowbowieoccv == 1
+	{
+		"Student [Studying Game Design]"
+	}
+	else
+	{
+		"???"
+	}
+}
+
+knowbowiefavefood
+{
+	if DiscoveredFavouriteFood == 1
+	{
+		"Vegemite and Cheese Sandwiches"
+	}
+	else
+	{
+		"???"
+	}
+}
+
+knowbowiehatefood
+{
+	if knowbowiehatefoodv == 1
+	{
+		"Insert Hated Food"
+	}
+	else
+	{
+		"???"
+	}
+}
+
+
+lovelvl
+{
+	if love == 0
+	{
+		"Lvl 0"
+	}
+	elseif love >= 1 && love <= 49
+	{
+		"Lvl 1"
+	}
+	elseif love >= 50 && love <= 99
+	{
+		"Lvl 2"
+	}
+	elseif love >= 100 && love <= 199
+	{
+		"Lvl 3"
+	}
+	elseif love >= 200 && love <= 299
+	{
+		"Lvl 4"
+	}
+	elseif love >= 300 && love <= 399
+	{
+		"Lvl 5"
+	}
+	elseif love >= 400 && love <= 499
+	{
+		"Lvl 6"
+	}
+	elseif love >= 500 && love <= 599
+	{
+		"Lvl 7"
+	}
+	elseif love >= 600 && love <= 699
+	{
+		"Lvl 8"
+	}
+	elseif love >= 700 && love <= 799
+	{
+		"Lvl 9"
+	}
+	elseif love >= 800 && love <= 899
+	{
+		"Lvl 10"
+	}
+	elseif love >= 900 && love <= 999
+	{
+		"Lvl 11"
+	}
+	elseif love >= 1000
+	{
+		"Lvl 12"
+	}
+}
+
+ On_\person
+{
+ 	person
+}
+
+// Unsure why it doesnt work, dont know enough about case/whens
+// OnTestingCases
+// {
+	// testingcases = RAND(4)
+	// if testingcases == 1
+	// {
+		// _testingcases = "one"
+	// }
+	// if testingcases == 2
+	// {
+		// _testingcases = "two"
+	// }
+	// if testingcases == 3
+	// {
+		// _testingcases = "three"
+	// }
+	// if testingcases == 4
+	// {
+		// _testingcases = "four"
+	// }
+	
+// case _testingcases
+// {
+	// when "one", "two"
+	// {
+		// "One or two.\e"
+	// }
+	// when "three", "four"
+	// {
+		// "Three or four.\e"
+	// }
+	// when ""
+	// {
+		// "None\e"
+	// }
+// }
+// }

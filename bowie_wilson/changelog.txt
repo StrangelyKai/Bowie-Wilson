@@ -1,0 +1,35 @@
+Beta 1.3 - 05/05/2023
+
+- Re-added ask menu
+- Fixed ask menu answers
+- Added new questions
+- Added Martin's Playlist and Bowie's wiki page to 'Bowie's Links'
+- Added poses for petting dialogue
+- Fixed boop dialogue pose
+- Changed dialogue to work with the current canon
+- Poses from certain dialogue have been removed to comply with the new shell layout
+- Removed 'Play a game' menu option, to be added back in future versions
+- Removed 'Profiles' in the journal menu
+- Removed Sandwich in give menu
+- Removed Anime Reccomendations from ask menu
+
+
+Beta 1.2 - 20/01/2023
+
+- Fixed dialogue glitches
+- Fixed first boot
+- Fixed typos
+- Added back button to profiles menu
+
+
+Beta 1.1 - 18/01/2023
+
+- Added dialogue + complete dialogue overhaul
+- Complete surface overhaul
+- New thumbnail
+- Removed unimportant features temporarily (ask menu, tell menu, phone menu, etc.)
+
+
+Beta 1.0 - 13/05/2022
+
+- Bowie's beta was released.

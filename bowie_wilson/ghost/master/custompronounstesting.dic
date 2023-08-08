@@ -1,0 +1,67 @@
+OnCustomPronounStart
+{
+"\0\s[0]Would you like custom pronouns?\n\n/
+\![*]\q[Yes,choiceyes]\n/
+\![*]\q[No,configmenu]\n"
+}
+
+Select.choiceyes
+{
+	"What is the 'he/she/they' equivalent of your pronouns?\![open,inputbox,OnCustomPronounThey,-1]"
+}
+
+OnCustomPronounThey
+{
+	tempheshe = reference0
+	{
+		if reference0 == "" || reference0 == " "
+		{
+			"You didn't put anything in! Try again.\![open,inputbox,OnCustomPronounThey,-1]"
+		}
+		else 
+		{
+			"What is the 'him/her/them' equivalent of your pronouns?\![open,inputbox,OnCustomPronounThem,-1]"
+		}
+	}
+}
+
+OnCustomPronounThem
+{
+	temphimher = reference0
+{
+		if reference0 == "" || reference0 == " "
+		{
+			"You didn't put anything in! Try again.\![open,inputbox,OnCustomPronounThem,-1]"
+		}
+		else 
+		{
+			"What is the 'his/hers/theirs' equivalent of your pronouns?\![open,inputbox,OnCustomPronounTheirs,-1]"
+	    }
+}
+}
+
+OnCustomPronounTheirs
+{
+	temphisher = reference0
+	{
+		if reference0 == "" || reference0 == " "
+		{
+			"You didn't put anything in! Try again.\![open,inputbox,OnCustomPronounTheirs,-1]"
+		}
+		else 
+		{
+			"Are your pronouns %(tempheshe)/%(temphimher)/%(temphisher).\n\n/
+	        \![*]\q[Yes,OnSetPronouns]\n/
+            \![*]\q[No,choiceyes]\n"	
+		}
+	}
+}
+
+OnSetPronouns
+{
+	heshe = tempheshe
+	himher = temphimher
+	hisher = temphisher
+	
+	"Your pronouns are now %(heshe)/%(himher)/%(hisher)."
+}

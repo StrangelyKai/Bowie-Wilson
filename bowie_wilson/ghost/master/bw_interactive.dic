@@ -1,0 +1,81 @@
+
+// ██ ███    ██ ████████ ███████ ██████   █████   ██████ ████████ ██ ██    ██ ███████ 
+// ██ ████   ██    ██    ██      ██   ██ ██   ██ ██         ██    ██ ██    ██ ██      
+// ██ ██ ██  ██    ██    █████   ██████  ███████ ██         ██    ██ ██    ██ █████   
+// ██ ██  ██ ██    ██    ██      ██   ██ ██   ██ ██         ██    ██  ██  ██  ██      
+// ██ ██   ████    ██    ███████ ██   ██ ██   ██  ██████    ██    ██   ████   ███████ 
+
+
+interactiveconvosgroup
+{
+	"\![raise,OnInterConvoHourly]"
+	--
+	"%(interconvos)"
+}
+
+interconvos : nonoverlap
+{
+	"%(interconvosongs)"
+	//"%(interconvotest)"
+}
+
+// Interconvo Song
+
+interconvosongs
+{
+	if knowusersong == 0
+	{
+	    "\![set,balloontimeout,-1]\*\0\s[109]What's your favourite song%(mandude)?\n\n\![*]\q[Reopen input box,inputboxreopensong]\n\![*]\q[Ignore,ignorebowie]\![open,inputbox,OnInterConvoSong]"
+	}
+	else
+	{
+		"\![set,balloontimeout,-1]\*\0\s[107]So,\w8 last time I asked,\w8 your favourite song was %(usersong).\w8\n\n\s[0]Is that still your favourite song%(mandude)?\n\n[half]/
+		\![*]\q[Yes,usersongsame]\n/
+		\![*]\q[No,usersongdifferent]\n\n[half]/
+		\![*]\q[Ignore,ignorebowie]"
+	}
+}
+
+interconvotest
+{
+	"Inter Convo Test."
+}
+
+OnInterConvoHourly
+{
+  interconvohourly = 1
+}
+
+Select.inputboxreopensong
+{
+	"\![open,inputbox,OnInterConvoSong]"
+}
+
+OnInterConvoSong
+{
+	knowusersong = 1
+	usersong = reference0
+	reference0 = TOLOWER(reference0)
+	--
+	if "millions" _in_ reference0 && "gerard way" _in_ reference0
+	{
+		"\0\s[101]Hey!\w8\n\n\s[104]That's my favourite song too!\w8\n\n\s[105]You have a good taste in music%(mandude)."
+	}
+	else
+	{
+		"\0\s[107]%(usersong)?\w8\n\nHm,\w8\s[105] I'll try listening to that sometime!"
+	}
+}
+
+Select.usersongsame
+{
+	"\0\s[105]It's still %(usersong)?\w8\n\nCool!!"
+}
+
+Select.usersongdifferent
+{
+	"\![set,balloontimeout,-1]\0\s[109]Your favourite song's changed?\w8\n\nWhat is it now?\n\n\![*]\q[Reopen input box,inputboxreopensong]\n\![*]\q[Ignore,ignorebowie]\![open,inputbox,OnInterConvoSong]"
+}
+
+
+//
